@@ -1,0 +1,11 @@
+void mergesort_num(int *arr, int left, int right);
+void mergesort_str(char **arr, int left, int right);
+void quicksort_num(int *arr, int left, int right);
+void quicksort_str(char **arr, int left, int right);
+void heapsort_num(int *arr, int n);
+void heapsort_str(char **arr, int n);
+void radixsort_num(int *arr, int n);
+void radixsort_str(char **arr, int n);
+void testdata();
+void result_num(int *arr, char *file);
+void result_str(char **arr, char *file);

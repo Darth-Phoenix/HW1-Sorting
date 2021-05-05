@@ -1,12 +1,14 @@
-all: main.c quicksort.o mergesort.o heapsort.o testdata.o
-	gcc main.c quicksort.o mergesort.o heapsort.o testdata.o -o main.out
-quicksort.o: quicksort.c quicksort.h
+all: main.c quicksort.o mergesort.o heapsort.o radixsort.o operation.o
+	gcc main.c quicksort.o mergesort.o heapsort.o radixsort.o operation.o -o main.out
+quicksort.o: quicksort.c sort.h
 	gcc -c quicksort.c -o quicksort.o
-mergesort.o: mergesort.c mergesort.h
+mergesort.o: mergesort.c sort.h
 	gcc -c mergesort.c -o mergesort.o
-heapsort.o: heapsort.c heapsort.h
+heapsort.o: heapsort.c sort.h
 	gcc -c heapsort.c -o heapsort.o
-testdata.o: testdata.c testdata.h
-	gcc -c testdata.c -o testdata.o
+radixsort.o: radixsort.c sort.h
+	gcc -c radixsort.c -o radixsort.o
+operation.o: operation.c sort.h
+	gcc -c operation.c -o operation.o
 clean:
-	rm -f quicksort.o mergesort.o heapsort.o testdata.o main.out
+	rm -f quicksort.o mergesort.o heapsort.o radixsort.o operation.o main.out

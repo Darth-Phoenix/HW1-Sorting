@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "heapsort.h"
+#include "sort.h"
 
 void heap_swap_num(int *arr, int a, int b){
     int temp=arr[a];
@@ -15,55 +15,55 @@ void heap_swap_str(char **arr, int a, int b){
     arr[b]=temp;
 }
 
-void heapify_num(int *tree, int n, int i){ 
+void heapify_num(int *arr, int n, int i){ 
     int c1=2*i+1;
     int c2=2*i+2;
     int max=i;
-    if (c1<n && tree[c1]>tree[max]){
+    if (c1<n && arr[c1]>arr[max]){
         max=c1;
     }
-    if (c2<n && tree[c2]>tree[max]){
+    if (c2<n && arr[c2]>arr[max]){
         max=c2;
     }
     if (max!=i){
-        heap_swap_num(tree, max, i);
-        heapify_num(tree, n, max);
+        heap_swap_num(arr, max, i);
+        heapify_num(arr, n, max);
     }
 }
 
-void heapify_str(char **tree, int n, int i){ 
+void heapify_str(char **arr, int n, int i){ 
     int c1=2*i+1;
     int c2=2*i+2;
     int max=i;
-    if (c1<n && strcmp(tree[c1], tree[max]) > 0){
+    if (c1<n && strcmp(arr[c1], arr[max]) > 0){
         max=c1;
     }
-    if (c2<n && strcmp(tree[c2], tree[max]) > 0){
+    if (c2<n && strcmp(arr[c2], arr[max]) > 0){
         max=c2;
     }
     if (max!=i){
-        heap_swap_str(tree, max, i);
-        heapify_str(tree, n, max);
+        heap_swap_str(arr, max, i);
+        heapify_str(arr, n, max);
     }
 }
 
-void heap_sort_num(int *tree, int n){
+void heapsort_num(int *arr, int n){
     for (int i=n/2-1; i>=0; i--){
-        heapify_num(tree, n, i);
+        heapify_num(arr, n, i);
     }
     for (int i=n-1; i>=0; i--){
-        heap_swap_num(tree, i, 0);
-        heapify_num(tree, i, 0);
+        heap_swap_num(arr, i, 0);
+        heapify_num(arr, i, 0);
     }
 }
 
-void heap_sort_str(char **tree, int n){
+void heapsort_str(char **arr, int n){
     for (int i=n/2-1; i>=0; i--){
-        heapify_str(tree, n, i);
+        heapify_str(arr, n, i);
     }
     for (int i=n-1; i>=0; i--){
-        heap_swap_str(tree, i, 0);
-        heapify_str(tree, i, 0);
+        heap_swap_str(arr, i, 0);
+        heapify_str(arr, i, 0);
     }
 }
 

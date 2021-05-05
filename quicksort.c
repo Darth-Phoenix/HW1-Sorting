@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "quicksort.h"
+#include "sort.h"
  
 void quick_swap_num(int *a, int *b){
     int c=*a;
@@ -16,43 +16,43 @@ void quick_swap_str(char** a, char** b){
 }
 
 int partition_num(int *arr, int left, int right){
-    int i = left - 1;
+    int i = left;
     int j;
     for(j = left; j < right; j++){
         if(arr[j] <= arr[right]){
-            i++;
             quick_swap_num(&arr[i], &arr[j]);
+            i++;
         }
     }
-    quick_swap_num(&arr[i+1], &arr[right]);
-    return i+1;
+    quick_swap_num(&arr[i], &arr[right]);
+    return i;
 }
 
 int partition_str(char **arr, int left, int right){
-    int i = left - 1;
+    int i = left;
     int j;
     for(j = left; j < right; j++){
         if(strcmp(arr[j],arr[right]) <= 0){
-            i++;
             quick_swap_str(&arr[i], &arr[j]);
+            i++;
         }
     }
-    quick_swap_str(&arr[i+1], &arr[right]);
-    return i+1;
+    quick_swap_str(&arr[i], &arr[right]);
+    return i;
 }
  
-void quick_sort_num(int *arr, int left, int right){
+void quicksort_num(int *arr, int left, int right){
     if(left < right){
-        int q = partition_num(arr, left, right);
-        quick_sort_num(arr, left, q-1);
-        quick_sort_num(arr, q+1, right);
+        int pivot = partition_num(arr, left, right);
+        quicksort_num(arr, left, pivot-1);
+        quicksort_num(arr, pivot+1, right);
     }
 }
 
-void quick_sort_str(char **arr, int left, int right){
+void quicksort_str(char **arr, int left, int right){
     if(left < right){
-        int q = partition_str(arr, left, right);
-        quick_sort_str(arr, left, q-1);
-        quick_sort_str(arr, q+1, right);
+        int pivot = partition_str(arr, left, right);
+        quicksort_str(arr, left, pivot-1);
+        quicksort_str(arr, pivot+1, right);
     }
 }
