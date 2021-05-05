@@ -1,6 +1,0 @@
-QuickSort integers performance 200414 us (equal 0.200414 sec)
-MergeSort integers performance 169522 us (equal 0.169522 sec)
-HeapSort integers performance 324807 us (equal 0.324807 sec)
-QuickSort strings performance 530141 us (equal 0.530141 sec)
-MergeSort strings performance 535229 us (equal 0.535229 sec)
-HeapSort strings performance 1427109 us (equal 1.427109 sec)
